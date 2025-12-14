@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Therapy Management System</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-illustration {
+            width: 100%;
+            max-width: 500px;
+        }
+        .hero-illustration svg {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="/" class="logo">
+                <div class="logo-icon">🌈</div>
+                <span class="logo-text">TherapyTrack</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="/login" class="btn btn-ghost">Login</a>
+                <a href="/register" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-shapes">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Empowering Every Child's Journey
+                    <span>Autism Therapy Management System</span>
+                </h1>
+                <p class="hero-description">
+                    A comprehensive platform designed to track therapy progress, 
+                    generate insightful reports, and connect therapists with parents 
+                    for better outcomes in autism therapy.
+                </p>
+                <div class="hero-buttons">
+                    <a href="/register" class="btn btn-lg" style="background: white; color: var(--primary-color);">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Trial
+                    </a>
+                    <a href="#features" class="btn btn-lg btn-outline" style="border-color: white; color: white;">
+                        <i class="fas fa-play-circle"></i>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-illustration animate-float">
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background shapes -->
+                        <circle cx="250" cy="200" r="150" fill="rgba(255,255,255,0.1)"/>
+                        <circle cx="250" cy="200" r="120" fill="rgba(255,255,255,0.1)"/>
+                        
+                        <!-- Children figures -->
+                        <g transform="translate(150, 150)">
+                            <!-- Child 1 -->
+                            <circle cx="50" cy="30" r="25" fill="#FFD93D"/>
+                            <ellipse cx="50" cy="80" rx="30" ry="40" fill="#6BCB77"/>
+                            <!-- Eyes -->
+                            <circle cx="43" cy="28" r="4" fill="#333"/>
+                            <circle cx="57" cy="28" r="4" fill="#333"/>
+                            <!-- Smile -->
+                            <path d="M40 38 Q50 48 60 38" stroke="#333" stroke-width="2" fill="none"/>
+                        </g>
+                        
+                        <g transform="translate(250, 130)">
+                            <!-- Child 2 -->
+                            <circle cx="50" cy="30" r="25" fill="#FFD93D"/>
+                            <ellipse cx="50" cy="80" rx="30" ry="40" fill="#4D96FF"/>
+                            <circle cx="43" cy="28" r="4" fill="#333"/>
+                            <circle cx="57" cy="28" r="4" fill="#333"/>
+                            <path d="M40 38 Q50 48 60 38" stroke="#333" stroke-width="2" fill="none"/>
+                        </g>
+                        
+                        <!-- Hearts -->
+                        <path d="M380 100 C380 85 365 85 365 100 C365 85 350 85 350 100 C350 120 365 135 365 135 C365 135 380 120 380 100" fill="#FF6B6B"/>
+                        <path d="M120 80 C120 70 110 70 110 80 C110 70 100 70 100 80 C100 92 110 102 110 102 C110 102 120 92 120 80" fill="#FF6B6B"/>
+                        
+                        <!-- Stars -->
+                        <polygon points="400,200 405,215 420,215 408,225 413,240 400,230 387,240 392,225 380,215 395,215" fill="#FFD93D"/>
+                        <polygon points="100,180 103,190 113,190 105,197 108,207 100,200 92,207 95,197 87,190 97,190" fill="#FFD93D"/>
+                        
+                        <!-- Rainbow arc -->
+                        <path d="M100 320 Q250 200 400 320" stroke="#FF6B6B" stroke-width="8" fill="none" opacity="0.5"/>
+                        <path d="M120 320 Q250 220 380 320" stroke="#FFD93D" stroke-width="8" fill="none" opacity="0.5"/>
+                        <path d="M140 320 Q250 240 360 320" stroke="#6BCB77" stroke-width="8" fill="none" opacity="0.5"/>
+                        <path d="M160 320 Q250 260 340 320" stroke="#4D96FF" stroke-width="8" fill="none" opacity="0.5"/>
+                        
+                        <!-- Puzzle pieces -->
+                        <g transform="translate(420, 280)">
+                            <rect x="0" y="0" width="40" height="40" rx="5" fill="#9B59B6"/>
+                            <circle cx="20" cy="-5" r="10" fill="#9B59B6"/>
+                            <circle cx="45" cy="20" r="10" fill="#fff" fill-opacity="0.3"/>
+                        </g>
+                        
+                        <g transform="translate(30, 250)">
+                            <rect x="0" y="0" width="35" height="35" rx="5" fill="#E74C3C"/>
+                            <circle cx="17" cy="-5" r="8" fill="#E74C3C"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-subtitle">
+                    Everything you need to track, analyze, and improve therapy outcomes
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-fadeInUp delay-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="feature-title">Child Profiles</h3>
+                    <p class="feature-description">
+                        Create comprehensive profiles with unique child codes for secure parent linking and detailed progress tracking.
+                    </p>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-200">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="feature-title">Session Logging</h3>
+                    <p class="feature-description">
+                        Record detailed therapy sessions across 8 developmental domains with comprehensive rating systems.
+                    </p>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-300">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Progress Reports</h3>
+                    <p class="feature-description">
+                        Automatically generated weekly and monthly reports with visual charts and actionable insights.
+                    </p>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-400">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Parent Portal</h3>
+                    <p class="feature-description">
+                        Dedicated dashboard for parents to view progress, access reports, and stay connected with therapists.
+                    </p>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-500">
+                    <div class="feature-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="feature-title">Auto Notifications</h3>
+                    <p class="feature-description">
+                        Automatic email notifications for new reports, session updates, and important alerts.
+                    </p>
+                </div>
+                <div class="feature-card animate-fadeInUp delay-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-description">
+                        Enterprise-grade security with encrypted data storage and secure authentication systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Domains Section -->
+    <section class="features" id="about" style="background: white;">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">8 Developmental Domains</h2>
+                <p class="section-subtitle">
+                    Comprehensive tracking across all key areas of development
+                </p>
+            </div>
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="domain-card communication">
+                    <div class="domain-header">
+                        <div class="domain-icon" style="background: rgba(102, 126, 234, 0.15); color: #667eea;">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4 class="domain-title">Communication Skills</h4>
+                    </div>
+                    <p style="color: var(--text-secondary);">Verbal & non-verbal communication tracking</p>
+                </div>
+                <div class="domain-card emotional">
+                    <div class="domain-header">
+                        <div class="domain-icon" style="background: rgba(255, 107, 107, 0.15); color: #ff6b6b;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4 class="domain-title">Emotional Development</h4>
+                    </div>
+                    <p style="color: var(--text-secondary);">Emotion recognition & regulation</p>
+                </div>
+                <div class="domain-card social">
+                    <div class="domain-header">
+                        <div class="domain-icon" style="background: rgba(17, 153, 142, 0.15); color: #11998e;">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h4 class="domain-title">Social Skills</h4>
+                    </div>
+                    <p style="color: var(--text-secondary);">Peer interaction & social understanding</p>
+                </div>
+                <div class="domain-card behavior">
+                    <div class="domain-header">
+                        <div class="domain-icon" style="background: rgba(243, 156, 18, 0.15); color: #f39c12;">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h4 class="domain-title">Behavior</h4>
+                    </div>
+                    <p style="color: var(--text-secondary);">Behavior patterns & management</p>
+                </div>
+                <div class="domain-card cognitive">
+                    <div class="domain-header">
+                        <div class="domain-icon" style="background: rgba(155, 89, 182, 0.15); color: #9b59b6;">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="domain-title">Cognitive Skills</h4>
+                    </div>
+                    <p style="color: var(--text-secondary);">Learning & problem-solving abilities</p>
+                </div>
+                <div class="domain-card sensory">
+                    <div class="domain-header">
+                        <div class="domain-icon" style="background: rgba(52, 152, 219, 0.15); color: #3498db;">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <h4 class="domain-title">Sensory Processing</h4>
+                    </div>
+                    <p style="color: var(--text-secondary);">Sensory responses & regulation</p>
+                </div>
+                <div class="domain-card daily-living">
+                    <div class="domain-header">
+                        <div class="domain-icon" style="background: rgba(26, 188, 156, 0.15); color: #1abc9c;">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4 class="domain-title">Daily Living Skills</h4>
+                    </div>
+                    <p style="color: var(--text-secondary);">Self-care & independence</p>
+                </div>
+                <div class="domain-card participation">
+                    <div class="domain-header">
+                        <div class="domain-icon" style="background: rgba(231, 76, 60, 0.15); color: #e74c3c;">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h4 class="domain-title">Therapy Participation</h4>
+                    </div>
+                    <p style="color: var(--text-secondary);">Session engagement & responsiveness</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 100px 30px; background: var(--primary-gradient);" id="contact">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; color: white;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to Get Started?</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 40px;">
+                Join hundreds of therapists and families using TherapyTrack to improve autism therapy outcomes.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="/register" class="btn btn-lg" style="background: white; color: var(--primary-color);">
+                    <i class="fas fa-user-md"></i>
+                    Register as Doctor
+                </a>
+                <a href="/register" class="btn btn-lg btn-outline" style="border-color: white; color: white;">
+                    <i class="fas fa-user"></i>
+                    Register as Parent
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--bg-dark); color: white; padding: 60px 30px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon">🌈</div>
+                        <span class="logo-text" style="color: white;">TherapyTrack</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        Empowering autism therapy through technology and compassion.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Quick Links</h4>
+                    <ul style="list-style: none; color: rgba(255,255,255,0.7);">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: inherit; text-decoration: none;">About Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: inherit; text-decoration: none;">Features</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: inherit; text-decoration: none;">Pricing</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: inherit; text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Support</h4>
+                    <ul style="list-style: none; color: rgba(255,255,255,0.7);">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: inherit; text-decoration: none;">Help Center</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: inherit; text-decoration: none;">Documentation</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px;">Connect</h4>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; color: rgba(255,255,255,0.5);">
+                <p>© 2025 TherapyTrack. All rights reserved. Made with ❤️ for autism awareness.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .domain-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

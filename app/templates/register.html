@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TherapyTrack</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .register-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .register-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .register-shape-1 { width: 400px; height: 400px; top: -150px; right: -150px; }
+        .register-shape-2 { width: 300px; height: 300px; bottom: -100px; left: -100px; }
+
+        .register-container {
+            max-width: 550px;
+            width: 100%;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            z-index: 1;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .register-header {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .register-header .logo {
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .register-header .logo-icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .register-header .logo-text {
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+
+        .register-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .register-header p {
+            opacity: 0.9;
+        }
+
+        .register-body {
+            padding: 40px;
+        }
+
+        .user-type-toggle {
+            display: flex;
+            background: var(--bg-primary);
+            padding: 5px;
+            border-radius: var(--border-radius-xl);
+            margin-bottom: 30px;
+        }
+
+        .user-type-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            background: transparent;
+            border-radius: var(--border-radius-xl);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .user-type-btn.active {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .register-form .form-group {
+            position: relative;
+        }
+
+        .register-form .form-input {
+            padding-left: 50px;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .child-code-section {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-md);
+            padding: 20px;
+            margin-bottom: 25px;
+            display: none;
+        }
+
+        .child-code-section.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .child-code-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .child-code-info i {
+            color: var(--info-color);
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(56, 239, 125, 0.15);
+            color: #11998e;
+            padding: 5px 12px;
+            border-radius: var(--border-radius-xl);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .login-link {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 25px;
+        }
+
+        .login-link a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .password-requirements {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius-sm);
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .password-requirements ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .password-requirements li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .password-requirements li i {
+            font-size: 0.75rem;
+        }
+
+        .password-requirements li.valid {
+            color: #11998e;
+        }
+
+        .password-requirements li.valid i {
+            color: #11998e;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .register-body {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-page">
+        <div class="register-shapes">
+            <div class="register-shape register-shape-1 animate-float"></div>
+            <div class="register-shape register-shape-2 animate-float" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="register-container">
+            <div class="register-header">
+                <a href="/" class="logo">
+                    <div class="logo-icon">🌈</div>
+                    <span class="logo-text">TherapyTrack</span>
+                </a>
+                <h2>Create Account</h2>
+                <p>Join us in making a difference</p>
+            </div>
+
+            <div class="register-body">
+                <div class="user-type-toggle">
+                    <button class="user-type-btn active" data-type="doctor">
+                        <i class="fas fa-user-md"></i> Doctor
+                    </button>
+                    <button class="user-type-btn" data-type="parent">
+                        <i class="fas fa-user"></i> Parent
+                    </button>
+                </div>
+
+                <form class="register-form" id="registerForm">
+                    <input type="hidden" id="userType" value="doctor">
+
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" class="form-input" id="name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" class="form-input" id="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <!-- Doctor specific field -->
+                    <div class="form-group doctor-field">
+                        <label class="form-label">Specialization</label>
+                        <i class="fas fa-briefcase-medical input-icon"></i>
+                        <input type="text" class="form-input" id="specialization" placeholder="e.g., ABA Therapy, Speech Therapy">
+                    </div>
+
+                    <!-- Parent specific field -->
+                    <div class="form-group parent-field" style="display: none;">
+                        <label class="form-label">Phone Number</label>
+                        <i class="fas fa-phone input-icon"></i>
+                        <input type="tel" class="form-input" id="phone" placeholder="Enter your phone number">
+                    </div>
+
+                    <!-- Child code section for parents -->
+                    <div class="child-code-section parent-field" id="childCodeSection">
+                        <div class="child-code-info">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Have a child code from your doctor? Enter it to link your account.</span>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" class="form-input" id="childCode" placeholder="e.g., P-2025-0012" style="flex: 1; padding-left: 20px;">
+                            <button type="button" class="btn btn-outline" id="verifyCodeBtn">Verify</button>
+                        </div>
+                        <div id="verificationResult" style="margin-top: 10px;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" class="form-input" id="password" placeholder="Create a password" required>
+                        <div class="password-requirements">
+                            <strong>Password must contain:</strong>
+                            <ul>
+                                <li id="req-length"><i class="fas fa-circle"></i> At least 8 characters</li>
+                                <li id="req-upper"><i class="fas fa-circle"></i> One uppercase letter</li>
+                                <li id="req-lower"><i class="fas fa-circle"></i> One lowercase letter</li>
+                                <li id="req-number"><i class="fas fa-circle"></i> One number</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" class="form-input" id="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 10px;">
+                        <i class="fas fa-user-plus"></i>
+                        Create Account
+                    </button>
+                </form>
+
+                <p class="login-link">
+                    Already have an account? <a href="/login">Sign In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/js/app.js"></script>
+    <script>
+        let childCodeVerified = false;
+        let verifiedChildName = '';
+
+        // User type toggle
+        document.querySelectorAll('.user-type-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.user-type-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('userType').value = this.dataset.type;
+
+                // Toggle fields
+                const doctorFields = document.querySelectorAll('.doctor-field');
+                const parentFields = document.querySelectorAll('.parent-field');
+
+                if (this.dataset.type === 'doctor') {
+                    doctorFields.forEach(f => f.style.display = 'block');
+                    parentFields.forEach(f => f.style.display = 'none');
+                } else {
+                    doctorFields.forEach(f => f.style.display = 'none');
+                    parentFields.forEach(f => {
+                        f.style.display = 'block';
+                        if (f.classList.contains('child-code-section')) {
+                            f.classList.add('show');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Password validation
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            
+            // Check length
+            const reqLength = document.getElementById('req-length');
+            if (password.length >= 8) {
+                reqLength.classList.add('valid');
+                reqLength.querySelector('i').className = 'fas fa-check-circle';
+            } else {
+                reqLength.classList.remove('valid');
+                reqLength.querySelector('i').className = 'fas fa-circle';
+            }
+
+            // Check uppercase
+            const reqUpper = document.getElementById('req-upper');
+            if (/[A-Z]/.test(password)) {
+                reqUpper.classList.add('valid');
+                reqUpper.querySelector('i').className = 'fas fa-check-circle';
+            } else {
+                reqUpper.classList.remove('valid');
+                reqUpper.querySelector('i').className = 'fas fa-circle';
+            }
+
+            // Check lowercase
+            const reqLower = document.getElementById('req-lower');
+            if (/[a-z]/.test(password)) {
+                reqLower.classList.add('valid');
+                reqLower.querySelector('i').className = 'fas fa-check-circle';
+            } else {
+                reqLower.classList.remove('valid');
+                reqLower.querySelector('i').className = 'fas fa-circle';
+            }
+
+            // Check number
+            const reqNumber = document.getElementById('req-number');
+            if (/[0-9]/.test(password)) {
+                reqNumber.classList.add('valid');
+                reqNumber.querySelector('i').className = 'fas fa-check-circle';
+            } else {
+                reqNumber.classList.remove('valid');
+                reqNumber.querySelector('i').className = 'fas fa-circle';
+            }
+        });
+
+        // Verify child code
+        document.getElementById('verifyCodeBtn').addEventListener('click', async function() {
+            const code = document.getElementById('childCode').value.trim();
+            
+            if (!code) {
+                showToast('Please enter a child code', 'warning');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/child/verify-code?code=${encodeURIComponent(code)}`, {
+                    method: 'POST'
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.valid) {
+                    childCodeVerified = true;
+                    verifiedChildName = data.child_name;
+                    document.getElementById('verificationResult').innerHTML = `
+                        <span class="verified-badge">
+                            <i class="fas fa-check-circle"></i>
+                            Verified - ${data.child_name}
+                        </span>
+                    `;
+                    showToast('Child code verified successfully!', 'success');
+                } else {
+                    childCodeVerified = false;
+                    document.getElementById('verificationResult').innerHTML = `
+                        <span style="color: var(--danger-color); font-size: 0.9rem;">
+                            <i class="fas fa-times-circle"></i>
+                            Invalid or expired code
+                        </span>
+                    `;
+                    showToast('Invalid child code', 'error');
+                }
+            } catch (error) {
+                showToast('Error verifying code', 'error');
+            }
+        });
+
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const userType = document.getElementById('userType').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate password match
+            if (password !== confirmPassword) {
+                showToast('Passwords do not match', 'error');
+                return;
+            }
+
+            // Validate password strength
+            if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+                showToast('Password does not meet requirements', 'error');
+                return;
+            }
+
+            let endpoint, body;
+
+            if (userType === 'doctor') {
+                const specialization = document.getElementById('specialization').value;
+                endpoint = '/api/auth/register/doctor';
+                body = {
+                    name: name,
+                    email: email,
+                    password: password,
+                    specialization: specialization || 'General Therapy'
+                };
+            } else {
+                const phone = document.getElementById('phone').value;
+                const childCode = document.getElementById('childCode').value;
+                endpoint = '/api/auth/register/parent';
+                body = {
+                    name: name,
+                    email: email,
+                    password: password,
+                    phone: phone || null,
+                    child_code: childCodeVerified ? childCode : null
+                };
+            }
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showToast('Registration successful! Please login.', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 1500);
+                } else {
+                    showToast(data.detail || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                showToast('Connection error. Please try again.', 'error');
+            }
+        });
+    </script>
+</body>
+</html>

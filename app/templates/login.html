@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TherapyTrack</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .login-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .login-shape-1 { width: 300px; height: 300px; top: -100px; left: -100px; }
+        .login-shape-2 { width: 200px; height: 200px; bottom: -50px; right: -50px; }
+        .login-shape-3 { width: 150px; height: 150px; top: 50%; left: 10%; }
+
+        .login-container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            z-index: 1;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+
+        .login-left h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .login-left p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .login-features {
+            list-style: none;
+        }
+
+        .login-features li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .login-features i {
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-right {
+            flex: 1;
+            padding: 60px 50px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header .logo {
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .login-header h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: var(--text-secondary);
+        }
+
+        .user-type-toggle {
+            display: flex;
+            background: var(--bg-primary);
+            padding: 5px;
+            border-radius: var(--border-radius-xl);
+            margin-bottom: 30px;
+        }
+
+        .user-type-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            background: transparent;
+            border-radius: var(--border-radius-xl);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        .user-type-btn.active {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .login-form .form-group {
+            position: relative;
+        }
+
+        .login-form .form-input {
+            padding-left: 50px;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: right;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: var(--text-light);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+
+        .divider span {
+            padding: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        .register-link {
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .register-link a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .login-left {
+                display: none;
+            }
+            
+            .login-right {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-shapes">
+            <div class="login-shape login-shape-1 animate-float"></div>
+            <div class="login-shape login-shape-2 animate-float" style="animation-delay: 1s;"></div>
+            <div class="login-shape login-shape-3 animate-float" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="login-container">
+            <div class="login-left">
+                <h2>Welcome Back! 🌈</h2>
+                <p>
+                    Sign in to continue tracking therapy progress and making a difference in children's lives.
+                </p>
+                <ul class="login-features">
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>Track therapy sessions</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>View detailed progress reports</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>Monitor developmental domains</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check"></i>
+                        <span>Connect with parents/therapists</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="login-right">
+                <div class="login-header">
+                    <a href="/" class="logo">
+                        <div class="logo-icon">🌈</div>
+                        <span class="logo-text">TherapyTrack</span>
+                    </a>
+                    <h3>Sign In</h3>
+                    <p>Choose your account type to continue</p>
+                </div>
+
+                <div class="user-type-toggle">
+                    <button class="user-type-btn active" data-type="doctor">
+                        <i class="fas fa-user-md"></i> Doctor
+                    </button>
+                    <button class="user-type-btn" data-type="parent">
+                        <i class="fas fa-user"></i> Parent
+                    </button>
+                </div>
+
+                <form class="login-form" id="loginForm">
+                    <input type="hidden" id="userType" value="doctor">
+                    
+                    <div class="form-group">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" class="form-input" id="email" placeholder="Email Address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" class="form-input" id="password" placeholder="Password" required>
+                    </div>
+
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <p class="register-link">
+                    Don't have an account? <a href="/register">Create Account</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/static/js/app.js"></script>
+    <script>
+        // User type toggle
+        document.querySelectorAll('.user-type-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.user-type-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('userType').value = this.dataset.type;
+            });
+        });
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userType = document.getElementById('userType').value;
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        user_type: userType
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Store token and user info
+                    localStorage.setItem('token', data.access_token);
+                    localStorage.setItem('userType', data.user_type);
+                    localStorage.setItem('userId', data.user_id);
+                    localStorage.setItem('userName', data.user_name);
+
+                    showToast('Login successful! Redirecting...', 'success');
+
+                    // Redirect based on user type
+                    setTimeout(() => {
+                        if (data.user_type === 'doctor') {
+                            window.location.href = '/doctor/dashboard';
+                        } else {
+                            window.location.href = '/parent/dashboard';
+                        }
+                    }, 1000);
+                } else {
+                    showToast(data.detail || 'Login failed', 'error');
+                }
+            } catch (error) {
+                showToast('Connection error. Please try again.', 'error');
+            }
+        });
+    </script>
+</body>
+</html>
